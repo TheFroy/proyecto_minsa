@@ -6,6 +6,7 @@ const mysql = require('mysql')
 const app = express()
 
 const usuariosRoute = require('./src/routes/usuarios.routes')
+const pacientesRoute = require('./src/routes/pacientes.routes')
 
 //settings
 dotenv.config({path: './.env'})
@@ -31,6 +32,7 @@ app.use(myConnection(mysql,{
 app.use(morgan('dev'))
 
 app.use('/usuarios',usuariosRoute)
+app.use('/pacientes',pacientesRoute)
 
 app.listen(app.get('port'), () => {
     console.log('Server running on port ' + app.get('port'))
