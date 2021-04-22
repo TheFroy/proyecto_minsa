@@ -51,17 +51,17 @@ usuarios.auth = (req, res) => {
                 if (rows.length > 0) {
                     bcrypt.compare(password,rows[0].password, (err,result) => {
                         if (result){
-                            res.json("Sesion iniciada")
+                            res.json(true)
                             return true
                         }
                         else {
-                            res.json("Contraseña incorrecta")
+                            res.json(false)
                             return false
                         }
                     });
                 }
                 else {
-                    res.json("El usuario no existe")
+                    res.json(false)
                     return false
                 }
             })
